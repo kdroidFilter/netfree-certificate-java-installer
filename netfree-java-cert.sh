@@ -11,7 +11,7 @@ if [[ $CERT == *"BEGIN CERTIFICATE"* ]]; then
     echo "Certificate downloaded and saved successfully."
 
     # Find all cacerts files, check if they are valid keystores, and import the certificate
-    sudo find / -name cacerts -exec sh -c 'echo "$(curl -sSL http://netfree.link/netfree-ca.crt)" | keytool -import -trustcacerts -alias netfree-ca -keystore "{}" -storepass changeit -file - -noprompt'
+    sudo find / -name cacerts -exec sh -c 'echo "$(curl -sSL http://netfree.link/netfree-ca.crt)" | keytool -import -trustcacerts -alias netfree-ca -keystore "{}" -storepass changeit -file - -noprompt' \;
 
     echo "Certificate imported to all found cacerts keystores."
 else
