@@ -3,8 +3,6 @@
 
 echo "Try download NetFree certificate"
 
-#TEST URL
-#CERT=$(curl -L "https://github.com/magicode/NetFree/raw/master/lib/ssl/ca/ca.crt" 2> /dev/null)
 
 CERT=$(curl -L "http://netfree.link/netfree-ca.crt" 2> /dev/null)
 
