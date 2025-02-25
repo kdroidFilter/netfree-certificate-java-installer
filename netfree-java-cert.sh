@@ -9,8 +9,8 @@ CERT=$(curl -L "$CERT_URL" 2> /dev/null)
 if [[ $CERT == *"BEGIN CERTIFICATE"* ]]; then
     echo "Certificate downloaded successfully."
 
-    # Find all cacerts files, check if they are valid keystores, and import the certificate
-    sudo find / -name cacerts -exec sh -c 'echo "'"$CERT"'" | keytool -import -trustcacerts -alias netfree-ca -keystore "{}" -storepass changeit -noprompt' \;
+    # Find all cacerts files in specified directories, check if they are valid keystores, and import the certificate
+    sudo find /usr/lib/jvm/ /home/$USER/Android/Sdk /home/$USER/.jdks/ -name cacerts -exec sh -c 'echo "'"$CERT"'" | keytool -import -trustcacerts -alias netfree-ca -keystore "{}" -storepass changeit -noprompt' \;
 
     echo "Certificate imported to all found cacerts keystores."
 else
